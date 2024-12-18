@@ -1,0 +1,59 @@
+﻿@model List<TrainReservation.Models.Ticket>
+@{
+    ViewBag.Title = "لیست بلیط ها";
+}
+<div class="container">
+    <h2>لیست بلیط های رزرو شده</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>نام مسافر</th>
+            <th>مسیر رفت</th>
+            <th>مسیر برگشت</th>
+            <th>زمان حرکت</th>
+            <th>زمان برگشت</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach(var ticket in Model)
+            {
+                <tr>
+                    <td>@ticket.PassengerName</td>
+
+                    <td>@ticket.DepratureRoute</td>
+
+                    <td>@ticket.ReturnRoute</td>
+
+                    <td>@ticket.DepartureTime</td>
+
+                    <td>@ticket.ReturnTime</td>
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+    <h3>نام مسافران</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>نام مسافر</th>
+                <th>قطار</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var ticket in Model)
+            {
+                <tr>
+                    <td>@ticket.PassengerName</td>
+                    <td>@ticket.DepratureRoute-@ticket.ReturnRoute</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="text-center"style="margin-top:20px";>
+        <a href="@Url.Action("Index","Train")"class="btn btn-success">بازگشت به صفحه اصلی</a>
+    </div>
+</div>
+
+

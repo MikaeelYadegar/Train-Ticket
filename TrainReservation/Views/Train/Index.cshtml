@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TrainReservation.Models.Train>
+@{
+    ViewBag.Title = "قطار ها";
+}
+
+<h2>قطار ها</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>نام قطار</th>
+            <th>مبدا</th>
+            <th>مقصد</th>
+            <th>زمان حرکت</th>
+            <th>زمان رسیدن</th>
+            <th>تعداد صندلی</th>
+            <th>رزرو بلیط</th>
+        </tr> 
+    </thead>
+    <tbody>
+        @foreach(var train in Model)
+        {
+            <tr>
+                <td>@train.TrainName</td>
+                <td>@train.Departure</td>
+                <td>@train.Arrival</td>
+                <td>@train.DepartureTime.ToString("HH:mm")</td>
+                <td>@train.ArrivalTime.ToString("HH:mm")</td>
+                <td>@train.AvailableSeats</td>
+                <td>@Html.ActionLink("رزرو بلیط", "ReserveTicket", new {id=train.TrainId })</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

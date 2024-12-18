@@ -1,0 +1,33 @@
+﻿ @model TrainReservation.Models.Train
+
+@{
+    ViewBag.Title = "رزرو بلیط";
+
+}
+<h2>رزرو بلیط برای قطار</h2>
+<table class="table">
+    <thead class="thead-dark">
+       
+        <tr>
+            <th>قطار:@Model.TrainName</th>
+            <th>مسیر رفت:@Model.Departure</th>
+            <th>مسیر برگشت:@Model.Arrival</th>
+        <th> زمان حرکت:@Model.DepartureTime</th>
+        <th> زمان برگشت:@Model.ReturnTime</th>
+        <th>صندلی موجود:@Model.AvailableSeats</th>
+    </tr>
+        </thead>
+</table>
+
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("trainId",Model.TrainId)
+    <div class="form-group">
+        <label for="PassengerName">نام مسافر</label>
+        <input type="text"name="PassengerName" class="form-control"required />
+    </div>
+    <button type="submit"class="btn btn-primary">رزرو بلیط</button> 
+}
+
+
